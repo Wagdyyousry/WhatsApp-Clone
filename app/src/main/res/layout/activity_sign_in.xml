@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/w1"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".ui.SignInActivity">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_whatsapp_img" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:hint="Enter your email"
+        android:textColorHint="@color/green"
+        app:hintTextColor="@color/white">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signUp_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/stroke_for_fulldata"
+            android:backgroundTint="@color/grayBackground"
+            android:drawableLeft="@drawable/ic_email"
+            android:drawablePadding="7dp"
+            android:hint="Enter your email"
+            android:inputType="text"
+            android:layoutDirection="ltr"
+            android:padding="14dp"
+            android:textColor="#02322E"
+            android:textColorHint="#FFFFFF"
+            android:textSize="18sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:hint="Enter your password"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/black"
+        android:textColorHint="@color/green"
+        app:hintTextColor="@color/black">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signUp_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/stroke_for_fulldata"
+            android:backgroundTint="@color/grayBackground"
+            android:drawableStart="@drawable/ic_lock"
+            android:drawablePadding="7dp"
+            android:hint="Enter your password"
+            android:inputType="text"
+            android:layoutDirection="ltr"
+            android:padding="14dp"
+            android:textColor="#02322E"
+            android:textColorHint="#FFFFFF"
+            android:textSize="18sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/btn_create_new_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="15dp"
+        android:text="Create new Account"
+        android:textColor="#fff"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btn_signIn"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/btn_faded_and_corner_blue"
+        android:text="SignIn"
+        android:textAllCaps="false"
+        android:textColor="#fff"
+        android:textSize="21sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_faceBook"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_faded_and_corner_blue"
+            android:backgroundTint="#DFD6D6"
+            android:drawableStart="@drawable/ic_facebook"
+            android:padding="10dp"
+            android:text="FaceBook"
+            android:textAllCaps="false"
+            android:textColor="#02322E"
+            android:textSize="21sp" />
+
+        <Button
+            android:id="@+id/btn_google"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_faded_and_corner_blue"
+            android:backgroundTint="#DFD6D6"
+            android:drawableStart="@drawable/ic_google"
+            android:padding="10dp"
+            android:text="Google"
+            android:textAllCaps="false"
+            android:textColor="#02322E"
+            android:textSize="21sp" />
+    </LinearLayout>
+</LinearLayout>

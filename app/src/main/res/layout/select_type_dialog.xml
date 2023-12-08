@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_gravity="bottom"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:gravity="center"
+    android:orientation="horizontal">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/dialog_select_layout_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_margin="8dp"
+            android:padding="5dp">
+            <ImageButton
+                android:id="@+id/dialog_select_btn_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/btn_shape"
+                android:backgroundTint="@color/status_background"
+                android:src="@drawable/ic_pic" />
+            <!--<TextView
+                android:text="Image"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18dp"
+                android:textStyle="italic|bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />-->
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/dialog_select_layout_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_margin="8dp"
+            android:padding="5dp">
+            <ImageButton
+                android:id="@+id/dialog_select_btn_video"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/btn_shape"
+                android:backgroundTint="@color/status_background"
+                android:src="@drawable/ic_video" />
+           <!-- <TextView
+                android:text="Video"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18dp"
+                android:textStyle="italic|bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />-->
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/dialog_select_layout_music"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_margin="8dp"
+            android:padding="5dp">
+            <ImageButton
+                android:id="@+id/dialog_select_btn_music"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/btn_shape"
+                android:backgroundTint="@color/status_background"
+                android:src="@drawable/ic_music" />
+            <!-- <TextView
+                 android:text="File"
+                 android:textColor="@color/colorPrimaryDark"
+                 android:textSize="18dp"
+                 android:textStyle="italic|bold"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 />
+ -->
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/dialog_select_layout_file"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_margin="8dp"
+            android:padding="5dp">
+            <ImageButton
+                android:id="@+id/dialog_select_btn_file"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/btn_shape"
+                android:backgroundTint="@color/status_background"
+                android:src="@drawable/ic_file" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>

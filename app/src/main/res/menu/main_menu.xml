@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+      <item android:id="@+id/create_new_group"
+          android:icon="@drawable/ic_group"
+          android:title="Create group"/>
+      <item android:id="@+id/settings"
+          android:title="Settings"
+          android:icon="@drawable/ic_settings"/>
+
+      <item android:id="@+id/logOut"
+          android:icon="@drawable/logout"
+          android:title="Log Out"/>
+
+</menu>

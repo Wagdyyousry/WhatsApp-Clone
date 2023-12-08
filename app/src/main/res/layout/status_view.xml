@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_view_cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="10dp">
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:orientation="horizontal"
+           android:layout_height="match_parent">
+           <RelativeLayout
+               android:id="@+id/image_layout"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="8dp"
+               android:layout_marginTop="8dp"
+               app:layout_constraintLeft_toLeftOf="parent"
+               app:layout_constraintTop_toTopOf="parent">
+
+
+               <de.hdodenhof.circleimageview.CircleImageView
+                   android:id="@+id/user_image_status_view"
+                   android:layout_width="75dp"
+                   android:layout_height="75dp"
+                   android:layout_centerInParent="true"
+                   android:padding="6dp"
+                   android:src="@drawable/ic_person_black" />
+
+               <com.devlomi.circularstatusview.CircularStatusView
+                   android:id="@+id/user_status_status_view"
+                   android:layout_width="75dp"
+                   android:layout_height="75dp"
+                   android:layout_centerInParent="true"
+                   app:portion_color="@color/colorAccent"
+                   app:portion_spacing="4dp"
+                   app:portion_width="4dp"
+                   app:portions_count="3" />
+
+
+           </RelativeLayout>
+
+
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:layout_marginStart="20dp"
+               android:orientation="vertical">
+               <TextView
+                   android:id="@+id/user_name_status_view"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginBottom="10dp"
+                   android:text="User Name"
+                   android:textColor="#000"
+                   android:textSize="16sp"
+                   android:textStyle="bold" />
+
+               <TextView
+                   android:id="@+id/created_time_status_view"
+                   android:maxLength="25"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="10/10/2023"
+                   android:textColor="@color/colorPrimaryDark"
+                   android:textSize="14sp" />
+
+           </LinearLayout>
+       </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

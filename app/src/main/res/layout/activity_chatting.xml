@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/w4"
+    tools:context=".ui.ChattingActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/chatting_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="start|center"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/chatting_btn_back"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
+                android:background="@drawable/ic_arrow_back"
+                android:backgroundTint="@color/white"
+                android:soundEffectsEnabled="true" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_view_image"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_profile_black"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="2dp" />
+
+            <TextView
+                android:id="@+id/chatting_tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:maxLength="10"
+                android:text="User name"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end|center"
+            android:layout_marginEnd="7dp"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/chatting_btn_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/ic_call_black"
+                android:backgroundTint="@color/white"
+                android:soundEffectsEnabled="true" />
+
+            <ImageButton
+                android:id="@+id/chatting_btn_camera"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/ic_camera"
+                android:backgroundTint="@color/white"
+                android:soundEffectsEnabled="true" />
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chatting_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/message_layout"
+        android:layout_below="@+id/chatting_toolbar"
+        android:paddingBottom="20dp" />
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/seekbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/btn_shape"
+        android:backgroundTint="@color/white"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_seekBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            android:text="Loading Data"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18dp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/progress_percentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:text="%"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <SeekBar
+            android:id="@+id/seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:max="100"
+            android:progress="1"
+            android:progressBackgroundTint="@color/black" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/message_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/chatting_btn_file"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_file"
+            android:backgroundTint="@color/colorPrimary"
+            android:soundEffectsEnabled="true" />
+
+        <EditText
+            android:id="@+id/chatting_et_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="1dp"
+            android:layout_weight="1"
+            android:autofillHints=""
+            android:background="@drawable/btn_shape"
+            android:backgroundTint="@color/white"
+            android:hint="type your message"
+            android:inputType="text"
+            android:padding="8dp"
+            android:soundEffectsEnabled="true" />
+
+        <Button
+            android:id="@+id/chatting_btn_send"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_arrow_circle_go"
+            android:backgroundTint="@color/colorPrimary"
+            android:soundEffectsEnabled="true" />
+
+    </LinearLayout>
+
+</RelativeLayout>
