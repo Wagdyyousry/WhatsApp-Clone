@@ -11,10 +11,6 @@ import com.wagdybuild.whatsapp.models.User
 import com.wagdybuild.whatsapp.repository.FirebaseDatabaseRepo
 import com.wagdybuild.whatsapp.repository.OnFetchingFirebaseData
 import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 @OptIn(DelicateCoroutinesApi::class)
 class FirebaseDatabaseViewModel(application: Application) : AndroidViewModel(application) {
@@ -40,20 +36,10 @@ class FirebaseDatabaseViewModel(application: Application) : AndroidViewModel(app
             }
 
             override fun onSuccessGettingGroupList(groupList: List<Group>) {
-                /*GlobalScope.launch {
-                    withContext(Dispatchers.Main) {
-                        groupListLiveData.postValue(groupList)
-                    }
-                }*/
                groupListLiveData.postValue(groupList)
             }
 
             override fun onSuccessGettingUserList(userList: List<User>) {
-                /*GlobalScope.launch {
-                    withContext(Dispatchers.Main) {
-                        userListLiveData.postValue(userList)
-                    }
-                }*/
                 userListLiveData.postValue(userList)
 
             }
@@ -67,21 +53,11 @@ class FirebaseDatabaseViewModel(application: Application) : AndroidViewModel(app
             }
 
             override fun onSuccessGettingGroupMessages(groupMessagesList: List<DBGroupMessage>) {
-               /* GlobalScope.launch {
-                    withContext(Dispatchers.Main) {
-                        groupMessagesListLiveData.postValue(groupMessagesList)
-                    }
-                }*/
                 groupMessagesListLiveData.postValue(groupMessagesList)
 
             }
 
             override fun onSuccessGettingChatMessages(friendsMessagesList: List<DBFriendMessage>) {
-               /* GlobalScope.launch {
-                    withContext(Dispatchers.Main) {
-                        chatMessagesListLiveData.postValue(friendsMessagesList)
-                    }
-                }*/
                 chatMessagesListLiveData.postValue(friendsMessagesList)
             }
 
