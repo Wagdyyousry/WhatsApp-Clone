@@ -23,15 +23,13 @@ import kotlinx.coroutines.launch
 @OptIn(DelicateCoroutinesApi::class)
 class FirebaseDatabaseRepo(context: Context, onGettingAllDataInterface: OnFetchingFirebaseData) {
     private var onGettingAllDataInterface: OnFetchingFirebaseData? = null
-    private var mAuth: FirebaseAuth? = null
-    private var db: FirebaseDatabase? = null
+    private var mAuth: FirebaseAuth? = FirebaseAuth.getInstance()
+    private var db: FirebaseDatabase? = FirebaseDatabase.getInstance()
     private var roomDAO: RoomDAO
 
     init {
         this.onGettingAllDataInterface = onGettingAllDataInterface
         roomDAO = RoomDatabase.getINSTANCE(context).roomDAO()
-        mAuth = FirebaseAuth.getInstance()
-        db = FirebaseDatabase.getInstance()
     }
 
     fun gettingCurrentUserData() {
@@ -50,7 +48,7 @@ class FirebaseDatabaseRepo(context: Context, onGettingAllDataInterface: OnFetchi
 
             })
 
-        var user = User()
+        var user: User
         GlobalScope.launch {
             user = roomDAO.getCurrentUserData(mAuth!!.currentUser!!.uid)
             if (user != null) {
@@ -62,17 +60,12 @@ class FirebaseDatabaseRepo(context: Context, onGettingAllDataInterface: OnFetchi
     }
 
     fun gettingUserList() {
-        val userList = ArrayList<User>()
         db!!.reference.child("Users").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                userList.clear()
                 for (dataSnapshot in snapshot.children) {
                     val userData = dataSnapshot.getValue(User::class.java)!!
-                    if (userData.id != mAuth!!.currentUser!!.uid) {
-                        userList.add(userData)
-                        GlobalScope.launch {
-                            roomDAO.insertOneUser(userData)
-                        }
+                    GlobalScope.launch {
+                        roomDAO.insertOneUser(userData)
                     }
                 }
             }
@@ -83,7 +76,7 @@ class FirebaseDatabaseRepo(context: Context, onGettingAllDataInterface: OnFetchi
         })
         var list: List<User>
         GlobalScope.launch {
-            list = roomDAO.gettingUserList()
+            list = roomDAO.gettingUserList(mAuth!!.currentUser!!.uid)
             if (list.isNotEmpty()) {
                 onGettingAllDataInterface!!.onSuccessGettingUserList(list)
             }
@@ -92,22 +85,17 @@ class FirebaseDatabaseRepo(context: Context, onGettingAllDataInterface: OnFetchi
     }
 
     fun gettingGroupList() {
-        val groupList = ArrayList<Group>()
         db!!.getReference("Groups").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                groupList.clear()
                 if (snapshot.exists()) {
                     for (dataSnapshot in snapshot.children) {
-                        val groupMembersList =
-                            dataSnapshot.child("groupMembers").value as ArrayList<String>
+                        val groupMembersList = dataSnapshot.child("groupMembers").value as ArrayList<String>
                         for (member in groupMembersList) {
                             if (member == mAuth!!.currentUser!!.uid) {
                                 val group = dataSnapshot.getValue(Group::class.java)!!
                                 GlobalScope.launch {
                                     roomDAO.insertOneGroup(group)
                                 }
-
-                                groupList.add(group)
                                 continue
                             }
                         }
@@ -132,25 +120,23 @@ class FirebaseDatabaseRepo(context: Context, onGettingAllDataInterface: OnFetchi
 
     fun gettingChatMessages(receiverId: String) {
         var check = 0
-        val messageList = ArrayList<DBFriendMessage>()
         db!!.reference.child("Chats")
             .child(mAuth!!.currentUser!!.uid)
             .child(receiverId).addValueEventListener(object : ValueEventListener {
                 @SuppressLint("NotifyDataSetChanged")
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    messageList.clear()
                     for (dataSnapshot in snapshot.children) {
                         val messageModel = dataSnapshot.getValue(DBFriendMessage::class.java)
                         messageModel!!.message_id = dataSnapshot.key.toString()
-                        GlobalScope.launch{
+                        GlobalScope.launch {
                             roomDAO.insertFriendsMessage(messageModel)
                         }
-                        messageList.add(messageModel)
                     }
                     var list: List<DBFriendMessage>?
                     GlobalScope.launch {
-                        delay(300)
-                        list = roomDAO.gettingFriendsMessageList(receiverId, mAuth!!.currentUser!!.uid)
+                        delay(380)
+                        list =
+                            roomDAO.gettingFriendsMessageList(receiverId, mAuth!!.currentUser!!.uid)
                         if (list!!.isNotEmpty()) {
                             check++
                             onGettingAllDataInterface!!.onSuccessGettingChatMessages(list!!)
@@ -176,21 +162,17 @@ class FirebaseDatabaseRepo(context: Context, onGettingAllDataInterface: OnFetchi
 
     fun gettingGroupMessages(groupId: String) {
         var check = 0
-        val messageList = ArrayList<DBGroupMessage>()
-
         db!!.reference.child("Groups_Chat")
             .child(groupId).addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    messageList.clear()
                     for (dataSnapshot in snapshot.children) {
                         val messageModel = dataSnapshot.getValue(DBGroupMessage::class.java)!!
                         messageModel.message_id = dataSnapshot.key.toString()
                         GlobalScope.launch {
                             roomDAO.insertGroupMessage(messageModel)
                         }
-                        messageList.add(messageModel)
                     }
-                    var list: List<DBGroupMessage>? = null
+                    var list: List<DBGroupMessage>?
                     GlobalScope.launch {
                         delay(300)
                         list = roomDAO.gettingGroupMessageList(groupId)

@@ -21,8 +21,8 @@ interface RoomDAO {
     @Query("select * from users_table where id=:userId")
     suspend fun getCurrentUserData(userId: String): User
 
-    @Query("select * from users_table")
-    suspend fun gettingUserList(): List<User>
+    @Query("select * from users_table where id!=:userId")
+    suspend fun gettingUserList(userId: String): List<User>
 
     /** Groups */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -41,7 +41,7 @@ interface RoomDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertFriendsMessage(message: DBFriendMessage)
 
-    @Query("select * from friendChatTable where receiver_id=:receiverId and sender_id=:senderId")
+    @Query("select * from friendChatTable where receiver_id=:receiverId and sender_id=:senderId order by time asc")
     suspend fun gettingFriendsMessageList(receiverId: String, senderId: String): List<DBFriendMessage>
 
     /** Groups Messages */

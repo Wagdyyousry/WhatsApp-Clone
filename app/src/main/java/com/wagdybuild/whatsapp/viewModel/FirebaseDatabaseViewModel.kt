@@ -32,36 +32,28 @@ class FirebaseDatabaseViewModel(application: Application) : AndroidViewModel(app
                     }
                 }*/
                 currentUserDataLiveData.postValue(user)
-
             }
-
             override fun onSuccessGettingGroupList(groupList: List<Group>) {
                groupListLiveData.postValue(groupList)
             }
-
             override fun onSuccessGettingUserList(userList: List<User>) {
                 userListLiveData.postValue(userList)
-
             }
-
             override fun onSuccessGettingCurrentUserStatus(userStatusList: ArrayList<Status>) {
                 currentUserStatusLiveData.postValue(userStatusList)
             }
-
             override fun onSuccessGettingOthersStatus(otherStatusList: ArrayList<ArrayList<Status>>) {
                 othersStatusLiveData.postValue(otherStatusList)
             }
-
             override fun onSuccessGettingGroupMessages(groupMessagesList: List<DBGroupMessage>) {
                 groupMessagesListLiveData.postValue(groupMessagesList)
 
             }
-
             override fun onSuccessGettingChatMessages(friendsMessagesList: List<DBFriendMessage>) {
                 chatMessagesListLiveData.postValue(friendsMessagesList)
             }
-
         })
+
         repo!!.gettingUserList()
         repo!!.gettingCurrentUserData()
         repo!!.gettingGroupList()
